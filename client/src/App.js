@@ -1,11 +1,13 @@
-import logo from "./logo.svg";
-import "./App.css";
-
-function App() {
+import React from "react";
+import { Route, BrowserRouter, Routes } from "react-router-dom";
+import {Login} from "./Routes.js"
+ function App() {
   return (
-    <div className="App">
-      <h1>React 18 Alpha</h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
