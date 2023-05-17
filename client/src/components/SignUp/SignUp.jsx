@@ -19,7 +19,23 @@ function SignUp() {
   };
 
   const handleSubmit = (e) => {
-    axios.post(`${server}/user/upload`);
+    e.preventDefault();
+    const config = { headers: { "content-type": "multipart/form-data" } };
+
+    const newFormData = new FormData();
+    newFormData.append("email", email);
+    newFormData.append("name", name);
+    newFormData.append("password", password);
+    newFormData.append("file", avatar);
+
+    axios
+      .post(`${server}/user/upload`, newFormData, config)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
