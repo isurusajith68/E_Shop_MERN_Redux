@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import styles from "../../styles/styles";
 import { RxAvatar } from "react-icons/rx";
+import axios from "axios";
+import { server } from "../../server";
 
 function SignUp() {
   const [email, setEmail] = useState("");
@@ -15,7 +17,11 @@ function SignUp() {
     const file = e.target.files[0];
     setAvatar(file);
   };
-  
+
+  const handleSubmit = (e) => {
+    axios.post(`${server}/user/upload`);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -25,7 +31,7 @@ function SignUp() {
       </div>
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form className="space-y-6" >
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label
                 htmlFor="email"
@@ -126,7 +132,7 @@ function SignUp() {
                     name="avatar"
                     id="file-input"
                     accept=".jpg,.jpeg,.png"
-                  onChange={handleFileInputChange}
+                    onChange={handleFileInputChange}
                     className="sr-only"
                   />
                 </label>
@@ -154,4 +160,4 @@ function SignUp() {
   );
 }
 
-export default SignUp
+export default SignUp;
