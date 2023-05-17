@@ -5,6 +5,8 @@ import styles from "../../styles/styles";
 import { RxAvatar } from "react-icons/rx";
 import axios from "axios";
 import { server } from "../../server";
+import { toast} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function SignUp() {
   const [email, setEmail] = useState("");
@@ -31,12 +33,17 @@ function SignUp() {
     axios
       .post(`${server}/user/upload`, newFormData, config)
       .then((res) => {
-        console.log(res);
+        toast.success(res.data.message);
+           setName("");
+           setEmail("");
+           setPassword("");
+           setAvatar();
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+       toast.error(error.response.data.message);
       });
   };
+
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
