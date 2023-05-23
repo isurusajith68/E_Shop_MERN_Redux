@@ -6,6 +6,7 @@ import { productData } from "../../static/data";
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import { BiMenuAltLeft } from "react-icons/bi";
 import DropDown from "./DropDown.jsx";
+import { categoriesData } from "../../static/data";
 function Header() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState(null);
@@ -110,7 +111,7 @@ function Header() {
               />
               {dropDown ? (
                 <DropDown
-                  // categoriesData={categoriesData}
+                  categoriesData={categoriesData}
                   setDropDown={setDropDown}
                 />
               ) : null}
