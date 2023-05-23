@@ -1,13 +1,12 @@
-import React from 'react'
-import Headers from '../components/Layout/Header.jsx'
-
+import React from "react";
+import Headers from "../components/Layout/Header.jsx";
 
 function HomePage() {
   return (
     <div>
-      <Headers/>
+      <Headers activeHeading={1} />
     </div>
-  )
+  );
 }
 
-export default HomePage
+export default HomePage;
