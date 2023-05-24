@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import styles from "../../styles/styles";
 import { Link } from "react-router-dom";
-import { AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineHeart, AiOutlineSearch } from "react-icons/ai";
 import { productData } from "../../static/data";
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import { BiMenuAltLeft } from "react-icons/bi";
 import DropDown from "./DropDown.jsx";
 import NavBar from "./NavBar.jsx";
 import { categoriesData } from "../../static/data";
-function Header({activeHeading}) {
+function Header({ activeHeading }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState(null);
   const [dropDown, setDropDown] = useState(false);
@@ -116,9 +116,19 @@ function Header({activeHeading}) {
                   setDropDown={setDropDown}
                 />
               ) : null}
-              {/* navItem */}
-              <div className={`${styles.noramlFlex}`}>
-                <NavBar active={activeHeading} />
+            </div>
+          </div>
+          {/* navItem */}
+          <div className={`${styles.noramlFlex}`}>
+            <NavBar active={activeHeading} />
+          </div>
+          <div className="flex">
+            <div className={`${styles.noramlFlex}`}>
+              <div className="relative cursor-pointer mr-[15px]">
+                <AiOutlineHeart size={30} color="rgb(255 255 255 / 83%)" />
+                <span class="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px]  leading-tight text-center">
+                  0
+                </span>
               </div>
             </div>
           </div>
